@@ -7,6 +7,7 @@ import dev.codenmore.tilegame.Handler;
 import dev.codenmore.tilegame.gfx.Animation;
 import dev.codenmore.tilegame.gfx.Assets;
 import dev.codenmore.tilegame.tiles.Tile;
+import dev.codenmore.tilegame.utils.PathFinder;
 
 public class Player extends Creature{
 	//Animations
@@ -53,37 +54,16 @@ public class Player extends Creature{
 		xMove = 0;
 		yMove = 0;
 		
-		if(handler.getMouseManager().leftPressed){
-			float tx = handler.getMouseManager().getMouseX();
-			float ty = handler.getMouseManager().getMouseY();
-			
-			if (tx - x > 0){
-			for(int counter = 0; counter <= tx - x; counter++)
-			 x ++;
-			}
-			else if(tx - x < 0){
-				for(int counter = 0; counter <= tx - x; counter++)
-				x --;}
-		
-	
-			if (y - ty > 0){
-				for(int counter = 0; counter <= ty - y; counter++)
-					 y ++;
-					}
-			else if(y - ty < 0)
-				for(int counter = 0; counter <= ty - y; counter++)
-				y--;
-			
-		}
 			
 			
-			/*yMove = -speed;
+		if(handler.getKeyManager().up)
+			yMove = -speed;
 		if(handler.getKeyManager().down)
 			yMove = speed; 
 		if(handler.getKeyManager().left)
 			xMove = -speed;
 		if(handler.getKeyManager().right)
-			xMove = speed;*/
+			xMove = speed;
 		
 	}
 	

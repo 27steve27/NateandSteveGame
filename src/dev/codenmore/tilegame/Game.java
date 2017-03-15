@@ -1,5 +1,5 @@
 package dev.codenmore.tilegame;
-//plz work
+
 import java.awt.Graphics;
 import java.awt.image.BufferStrategy;
 

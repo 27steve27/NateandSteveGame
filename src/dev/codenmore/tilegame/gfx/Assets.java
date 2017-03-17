@@ -11,6 +11,7 @@ public class Assets {
 	public static BufferedImage[] player_up;
 	public static BufferedImage[] player_right;
 	public static BufferedImage[] player_left;
+	public static BufferedImage atkup, atkdown, atkleft, atkright;
 
 	
 	
@@ -19,39 +20,45 @@ public class Assets {
 		
 		player_down = new BufferedImage[2];
 		
-		player_down[0]= sheet.crop(0,0, width, height);
-		player_down[1]= sheet.crop(0, height, width, height);
+		player_down[0]= sheet.crop(width * 4,0, width, height);
+		player_down[1]= sheet.crop(width * 5, 0, width, height);
 		
 		player_up = new BufferedImage[2];
 		
-		player_up[0]= sheet.crop(0,height * 6 + 5, width, height);
-		player_up[1]= sheet.crop(0,height * 7 + 5, width, height);
+		player_up[0]= sheet.crop(width * 10, 0, width, height);
+		player_up[1]= sheet.crop(width * 11, 0, width, height);
 		
 		player_right = new BufferedImage[2];
 		
-		player_right[0]= sheet.crop(0,height * 5 + 2, width, height);
-		player_right[1]= sheet.crop(0, height * 4 + 2, width, height);
+		player_right[0]= sheet.crop(width * 8, 0, width, height);
+		player_right[1]= sheet.crop(width * 9, 0, width, height);
 		
 		player_left = new BufferedImage[2];
 		
-		player_left[0]= sheet.crop(0,height * 2 , width, height);
-		player_left[1]= sheet.crop(0, height * 3 , width, height);
+		player_left[0]= sheet.crop(width * 6, 0 , width, height);
+		player_left[1]= sheet.crop(width * 7, 0 , width, height);
+		
+		
 		
 		
 		
 				
 				
-		water = sheet.crop(width + 1, height * 4, width, height);
-		grass = sheet.crop(width + 1, 0 , width, height);
-		lava = sheet.crop(width * 4 + 1, 0, width, height);
-		tree = sheet.crop(width + 1, height, width, height);
-		rock = sheet.crop(width * 3 + 1, height * 14, width, height);
-		deadTree = sheet.crop(width * 2 + 1, height * 15, width, height);
-		pine = sheet.crop(width * 10, height * 19, width, height);
-		wall = sheet.crop(width * 7, height * 1 , width, height);
+		water = sheet.crop(width, height * 4, width, height);
+		grass = sheet.crop(0 , height , width, height);
+		lava = sheet.crop(width * 3, height, width, height);
+		tree = sheet.crop(0, height * 2, width, height);
+		rock = sheet.crop(width * 2, height * 15, width, height);
+		deadTree = sheet.crop(0 , height * 16, width, height);
+		pine = sheet.crop(width * 9, height * 20, width, height);
+		wall = sheet.crop(width * 6, height * 2 , width, height);
 		
 		
-		
+		atkleft = water = sheet.crop(width , 0, width, height);
+		atkright = sheet.crop(width * 2, 0, width, height);
+		atkup = sheet.crop(width * 3, 0, width, height);
+		atkdown = sheet.crop(0, 0, width, height);
+	
 		
 	}
 }

@@ -26,6 +26,13 @@ public class World {
 		loadWorld(path);
 		
 		entityManager.addEntity(new Tree(handler, 100, 500));
+		entityManager.addEntity(new Tree(handler, 140, 500));
+		entityManager.addEntity(new Tree(handler, 132, 85));
+		entityManager.addEntity(new Tree(handler, 36, 912));
+		entityManager.addEntity(new Tree(handler, 301, 300));
+		entityManager.addEntity(new Tree(handler, 10, 50));
+		entityManager.addEntity(new Tree(handler, 42, 141));
+		
 		
 		entityManager.getPlayer().setX(spawnX);
 		entityManager.getPlayer().setY(spawnY);

@@ -25,9 +25,7 @@ public class Game implements Runnable{
 	
 	private BufferStrategy bs;
 	private Graphics g;
-	
-	//private BufferedImage testImage;
-	//private SpriteSheet sheet;
+
 	
 	public State gameState;
 	public State menuState;
@@ -75,7 +73,7 @@ public class Game implements Runnable{
 			gameState = new GameState(handler);
 			menuState = new MenuState(handler);
 			settingsState = new SettingsState(handler);
-			State.setState(menuState);
+			State.setState(gameState);
 		}	
 		
 		private void tick(){

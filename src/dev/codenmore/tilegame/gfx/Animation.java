@@ -8,6 +8,7 @@ public class Animation {
 	private long lastTime;
 	private long timer;
 	private BufferedImage[] frames;
+
 	
 	public Animation(int speed, BufferedImage[] frames){
 		this.speed = speed;
@@ -19,6 +20,10 @@ public class Animation {
 	public BufferedImage getCurrentFrame(){
 		return frames[index];
 	}
+	
+	
+	
+	
 	
 	public void tick(){
 		 timer += System.currentTimeMillis() - lastTime;

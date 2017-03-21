@@ -48,6 +48,7 @@ public void tick(){
 public void render(Graphics g){
 	for(Entity e : entities){
 		e.render(g);
+		player.postRender(g);
 	}
 	
 }

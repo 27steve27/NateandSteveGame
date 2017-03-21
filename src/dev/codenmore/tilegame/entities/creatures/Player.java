@@ -8,6 +8,7 @@ import dev.codenmore.tilegame.Handler;
 import dev.codenmore.tilegame.entities.Entity;
 import dev.codenmore.tilegame.gfx.Animation;
 import dev.codenmore.tilegame.gfx.Assets;
+import dev.codenmore.tilegame.inventory.Inventory;
 
 public class Player extends Creature{
 	//Animations
@@ -15,8 +16,11 @@ public class Player extends Creature{
 	private Animation animRight;
 	private Animation animLeft;
 	private Animation animUp;
-	
+	//Attack Timer
 	private long lastAttackTimer, attackCooldown = 800, attackTimer = attackCooldown;
+	
+	//Inventory
+	private Inventory inventory;
 	
 	
 
@@ -25,6 +29,7 @@ public class Player extends Creature{
 		bounds.y = 5;
 		bounds.width = 14;
 		bounds.height = 18;
+		inventory = new Inventory(handler);
 		
 		 //Animations
 		
@@ -51,6 +56,9 @@ public class Player extends Creature{
 		getInput();
 		move();
 		handler.getGameCamera().centerOnEntity(this);
+		
+		//Inventory
+		inventory.tick();
 	}
 	
 	private void checkAttacks(){
@@ -128,6 +136,8 @@ public class Player extends Creature{
 	
 	@Override
 	public void render(Graphics g) {
+		
+		
 		if(handler.getKeyManager().aDown){
 			g.drawImage(Assets.atkdown,(int) (x-handler.getGameCamera().getxOffset()), (int) (y-handler.getGameCamera().getyOffset()), width, height, null);
 		}else if (handler.getKeyManager().aUp){
@@ -142,8 +152,12 @@ public class Player extends Creature{
 //		g.setColor(Color.red);
 //		g.fillRect((int) (x + bounds.x - handler.getGameCamera().getxOffset()),
 	//			(int) (y + bounds.y - handler.getGameCamera().getyOffset()), bounds.width, bounds.height);
-		 
-	} 
+		
+	}
+	public void postRender(Graphics g){
+		inventory.render(g);
+	}
+
  private BufferedImage getCurrentAnimationFrame(){
 	
 	 
@@ -164,6 +178,16 @@ public class Player extends Creature{
 	 
 	 }
  }
+
+public Inventory getInventory() {
+	return inventory;
+}
+
+public void setInventory(Inventory inventory) {
+	this.inventory = inventory;
+}
+ 
+ 
 }
 	
  

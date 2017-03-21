@@ -1,6 +1,8 @@
 package dev.codenmore.tilegame.items;
 
+import java.awt.Color;
 import java.awt.Graphics;
+import java.awt.Rectangle;
 import java.awt.image.BufferedImage;
 
 import dev.codenmore.tilegame.Handler;
@@ -12,19 +14,23 @@ public class Item {
 	
 	public static Item[] items = new Item[256];
 	public static Item woodItem = new Item(Assets.wood, "Wood", 0);
+	public static Item pebbleItem = new Item(Assets.pebble, "Pebble", 1);
 	
 	
 	
 	//Class
 
-	public static final int ITEM_WIDTH = 32, ITEM_HEIGHT = 32, PICKED_UP = -1;
+	public static final int ITEM_WIDTH = 32, ITEM_HEIGHT = 32;
 	
 	protected Handler handler;
 	protected BufferedImage texture;
 	protected String name;
 	protected final int id;
 	
+	protected Rectangle bounds; 
+	
 	protected int x, y, count;
+	protected boolean pickedUp = false;
 	
 	public Item(BufferedImage texture, String name, int id){
 		this.texture = texture;
@@ -32,13 +38,25 @@ public class Item {
 		this.id = id;
 		count = 1; 
 		
+		bounds = new Rectangle(x, y, ITEM_WIDTH, ITEM_HEIGHT);
+		
 		items[id] =  this;
 	}
 	
 	public void tick(){
+		if(handler.getWorld().getEntityManager().getPlayer().getCollisionBounds(0f, 0f).intersects(bounds) && handler.getKeyManager().space){
+			pickedUp = true;
+		handler.getWorld().getEntityManager().getPlayer().getInventory().addItem(this);
+		}
 	}
 	
 	public void render(Graphics g){
+		if(handler.getWorld().getEntityManager().getPlayer().getCollisionBounds(0f, 0f).intersects(bounds)){
+			g.setColor(Color.DARK_GRAY);
+			g.fillRect(400, 15, 50, 20);
+			g.setColor(Color.CYAN);
+		g.drawString("Pick up", 400, 25);
+		}
 		if(handler == null)
 			return;
 
@@ -49,6 +67,15 @@ public class Item {
 		g.drawImage(texture, x, y, ITEM_WIDTH, ITEM_HEIGHT, null);
 	}
 	
+	
+	public Item createNew(int count){
+		Item i = new Item(texture, name, id);
+		i.setPickedUp(true);
+		i.setCount(count);
+		return i;
+	}
+	
+	
 	public Item createNew(int x, int y){
 		Item i = new Item(texture, name, id);
 		i.setPosition(x, y);
@@ -58,7 +85,10 @@ public class Item {
 	public void setPosition(int x, int y){
 		this.x = x;
 		this.y = y;
+		bounds.x = x;
+		bounds.y = y;
 	}
+	
 	
 	public Handler getHandler() {
 		return handler;
@@ -122,6 +152,14 @@ public class Item {
 
 	public int getId() {
 		return id;
+	}
+
+	public boolean isPickedUp() {
+		return pickedUp;
+	}
+
+	public void setPickedUp(boolean pickedUp) {
+		this.pickedUp = pickedUp;
 	}
 
 

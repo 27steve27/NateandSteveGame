@@ -1,22 +1,32 @@
 package dev.codenmore.tilegame.gfx;
 
+import java.awt.Font;
 import java.awt.image.BufferedImage;
 
 public class Assets {
 	
 	private static final int width = 32, height = 32;
 	
-	public static BufferedImage player, grass, water, wood, lava, tree, rock, deadTree, pine, wall;
+	public static Font font28;
+	
+	public static BufferedImage player, grass, water, lava, tree, rock, deadTree, pine, wall;
+	//Items
+	public static BufferedImage wood, pebble;
 	public static BufferedImage[] player_down;
 	public static BufferedImage[] player_up;
 	public static BufferedImage[] player_right;
 	public static BufferedImage[] player_left;
 	public static BufferedImage atkup, atkdown, atkleft, atkright;
+	public static BufferedImage	inventoryScreen;
 
 	
 	
 	public static void init(){
+		//font28 = FontLoader.loadFont("/res/fonts/AGENCYR.ttf", 28);
+		
 		SpriteSheet sheet = new SpriteSheet(ImageLoader.loadImage("/textures/texturesheet.png"));
+		
+		inventoryScreen = ImageLoader.loadImage("/textures/inventoryScreen.png");
 		
 		
 		//Player Animations 
@@ -44,6 +54,7 @@ public class Assets {
 		
 		//Items
 		wood = sheet.crop(width * 4, height * 6, width, height);
+		pebble = sheet.crop(width, height * 14, width, height);
 				
 		//Entities		
 		water = sheet.crop(width, height * 4, width, height);

@@ -5,6 +5,7 @@ import java.awt.Graphics;
 import dev.codenmore.tilegame.Handler;
 import dev.codenmore.tilegame.entities.EntityManager;
 import dev.codenmore.tilegame.entities.creatures.Player;
+import dev.codenmore.tilegame.entities.statics.Rock;
 import dev.codenmore.tilegame.entities.statics.Tree;
 import dev.codenmore.tilegame.items.ItemManager;
 import dev.codenmore.tilegame.tiles.Tile;
@@ -32,7 +33,7 @@ public class World {
 	 
 		
 		entityManager.addEntity(new Tree(handler, 100, 500));
-		entityManager.addEntity(new Tree(handler, 140, 500));
+		entityManager.addEntity(new Rock(handler, 140, 500));
 		entityManager.addEntity(new Tree(handler, 132, 85));
 		entityManager.addEntity(new Tree(handler, 36, 912));
 		entityManager.addEntity(new Tree(handler, 301, 300));

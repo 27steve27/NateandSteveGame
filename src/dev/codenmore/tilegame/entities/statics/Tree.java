@@ -1,12 +1,13 @@
 package dev.codenmore.tilegame.entities.statics;
 
-import java.awt.Color;
 import java.awt.Graphics;
+import java.util.Random;
 
 import dev.codenmore.tilegame.Handler;
 import dev.codenmore.tilegame.gfx.Assets;
 import dev.codenmore.tilegame.items.Item;
 import dev.codenmore.tilegame.tiles.Tile;
+import dev.codenmore.tilegame.utils.RandomNumber;
 
 public class Tree extends StaticEntity{
 
@@ -16,12 +17,14 @@ public class Tree extends StaticEntity{
 		bounds.y = 6;
 		bounds.width = 17;
 		bounds.height = 22;
-		
+		health = 1;
 		
 		
 	}
 	@Override
 	public void die(){
+		int droproll = RandomNumber.randomInt(1, 128);
+		if(droproll >=1 && droproll <= 128)
 		handler.getWorld().getItemManager().addItem(Item.woodItem.createNew((int) x,(int) y));
 	}
 	

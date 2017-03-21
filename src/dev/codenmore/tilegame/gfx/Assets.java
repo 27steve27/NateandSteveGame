@@ -6,7 +6,7 @@ public class Assets {
 	
 	private static final int width = 32, height = 32;
 	
-	public static BufferedImage player, grass, water, lava, tree, rock, deadTree, pine, wall;
+	public static BufferedImage player, grass, water, wood, lava, tree, rock, deadTree, pine, wall;
 	public static BufferedImage[] player_down;
 	public static BufferedImage[] player_up;
 	public static BufferedImage[] player_right;
@@ -18,6 +18,8 @@ public class Assets {
 	public static void init(){
 		SpriteSheet sheet = new SpriteSheet(ImageLoader.loadImage("/textures/texturesheet.png"));
 		
+		
+		//Player Animations 
 		player_down = new BufferedImage[2];
 		
 		player_down[0]= sheet.crop(width * 4,0, width, height);
@@ -40,10 +42,10 @@ public class Assets {
 		
 		
 		
-		
-		
+		//Items
+		wood = sheet.crop(width * 4, height * 6, width, height);
 				
-				
+		//Entities		
 		water = sheet.crop(width, height * 4, width, height);
 		grass = sheet.crop(0 , height , width, height);
 		lava = sheet.crop(width * 3, height, width, height);

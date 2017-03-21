@@ -5,6 +5,7 @@ import java.awt.Graphics;
 
 import dev.codenmore.tilegame.Handler;
 import dev.codenmore.tilegame.gfx.Assets;
+import dev.codenmore.tilegame.items.Item;
 import dev.codenmore.tilegame.tiles.Tile;
 
 public class Tree extends StaticEntity{
@@ -21,7 +22,7 @@ public class Tree extends StaticEntity{
 	}
 	@Override
 	public void die(){
-	
+		handler.getWorld().getItemManager().addItem(Item.woodItem.createNew((int) x,(int) y));
 	}
 	
 	@Override

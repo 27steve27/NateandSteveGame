@@ -6,6 +6,7 @@ import dev.codenmore.tilegame.Handler;
 import dev.codenmore.tilegame.entities.EntityManager;
 import dev.codenmore.tilegame.entities.creatures.Player;
 import dev.codenmore.tilegame.entities.statics.Tree;
+import dev.codenmore.tilegame.items.ItemManager;
 import dev.codenmore.tilegame.tiles.Tile;
 import dev.codenmore.tilegame.utils.Utils;
 
@@ -19,11 +20,16 @@ public class World {
 	//Entities
 	private EntityManager entityManager;
 	
+	//ITems
+	private ItemManager itemManager;
+	
 	
 	public World(Handler handler, String path) {
 		this.handler = handler;
 		entityManager = new EntityManager(handler, new Player(handler, 100, 100));
+		itemManager = new ItemManager(handler);
 		loadWorld(path);
+	 
 		
 		entityManager.addEntity(new Tree(handler, 100, 500));
 		entityManager.addEntity(new Tree(handler, 140, 500));
@@ -48,6 +54,7 @@ public class World {
 
 	public void tick(){
 		entityManager.tick();
+		itemManager.tick();
 		
 		
 	}
@@ -66,10 +73,28 @@ public class World {
 				
 			}
 		}
+		
+		itemManager.render(g);
 		//Entities
 		entityManager.render(g);
 	}
 	
+	public Handler getHandler() {
+		return handler;
+	}
+
+	public void setHandler(Handler handler) {
+		this.handler = handler;
+	}
+
+	public ItemManager getItemManager() {
+		return itemManager;
+	}
+
+	public void setItemManager(ItemManager itemManager) {
+		this.itemManager = itemManager;
+	}
+
 	public Tile getTile(int x, int y){
 		if(x<0 || y <0 || x>= width || y>=height)
 			return Tile.grassTile;

@@ -26,7 +26,7 @@ public class Assets {
 		
 		SpriteSheet sheet = new SpriteSheet(ImageLoader.loadImage("/textures/texturesheet.png"));
 		
-		inventoryScreen = ImageLoader.loadImage("/textures/inventoryScreen.png");
+		inventoryScreen = ImageLoader.loadImage("/textures/inventory.png");
 		
 		
 		//Player Animations 

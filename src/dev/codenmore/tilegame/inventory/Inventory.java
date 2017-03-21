@@ -15,6 +15,10 @@ public class Inventory {
 	private boolean active = false;
 	private ArrayList<Item> inventoryItems;
 	
+	public int inventoryPositionX = 0;
+	public int inventoryPositionY = 340;
+	
+	private int selectedItem = 0;
 	
 	
 	
@@ -39,10 +43,16 @@ public class Inventory {
 		if(!active)
 			return;
 		
-		g.drawImage(Assets.inventoryScreen, 0, 400, 300, 366, null);
-		g.setColor(Color.WHITE);
-		g.drawString("Pebble", 60, 460);
-	}
+		g.drawImage(Assets.inventoryScreen, inventoryPositionX, inventoryPositionY, 300, 400, null);
+		
+		int len = inventoryItems.size();
+		if(len == 0){
+			return;
+		}
+		
+		
+		}
+	
 	
 	
 	//Inventory methods	
